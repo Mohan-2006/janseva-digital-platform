@@ -1,0 +1,46 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * { @apply box-border; }
+  body {
+    @apply bg-gray-50 text-gray-900;
+    font-family: 'Inter', 'Noto Sans Devanagari', system-ui, sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
+  :focus-visible { @apply outline-2 outline-blue-500 outline-offset-2; }
+}
+
+@layer components {
+  .btn-primary {
+    @apply bg-blue-900 hover:bg-blue-800 text-white font-semibold py-2.5 px-5 rounded-lg transition duration-200 disabled:opacity-60 disabled:cursor-not-allowed;
+  }
+  .btn-secondary {
+    @apply bg-white hover:bg-gray-50 text-blue-900 font-semibold py-2.5 px-5 rounded-lg border border-blue-200 transition duration-200;
+  }
+  .input-field {
+    @apply w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition text-sm;
+  }
+  .card { @apply bg-white rounded-xl shadow-sm border border-gray-100 p-5; }
+  .status-pending { @apply bg-yellow-100 text-yellow-800 px-2.5 py-0.5 rounded-full text-xs font-medium; }
+  .status-approved { @apply bg-green-100 text-green-800 px-2.5 py-0.5 rounded-full text-xs font-medium; }
+  .status-rejected { @apply bg-red-100 text-red-800 px-2.5 py-0.5 rounded-full text-xs font-medium; }
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  .btn-primary { @apply bg-blue-950 border-2 border-white; }
+  body { @apply text-black bg-white; }
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  * { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+}
+
+/* PWA safe areas */
+@supports (padding: env(safe-area-inset-top)) {
+  .safe-top { padding-top: env(safe-area-inset-top); }
+  .safe-bottom { padding-bottom: env(safe-area-inset-bottom); }
+}
